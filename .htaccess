@@ -1,0 +1,16 @@
+RewriteEngine on
+
+#force authorization access
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+#custom routes
+RewriteRule ^user/auth/signup$ api/users/signup.php [NC,L]
+RewriteRule ^user/auth/email/verify$ api/users/verify-email.php [NC,L]
+RewriteRule ^user/auth/email/resend$ api/users/resend-email-verification.php [NC,L]
+RewriteRule ^user/auth/password/reset$ api/users/reset-password.php [NC,L]
+RewriteRule ^user/auth/login$ api/users/login.php [NC,L]
+RewriteRule ^user/auth/profile/([0-9]+)$ api/users/profile.php?id=$1 [NC,L]
+RewriteRule ^user/audio/subscribe$ api/users/subscribe.php [NC,L]
+RewriteRule ^user/audio/decrypt$ api/users/decrypt.php [NC,L]
+RewriteRule ^user/audio/trial$ api/users/trial.php [NC,L]
