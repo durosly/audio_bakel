@@ -34,7 +34,7 @@
             }
         } else {
             http_response_code(400);//Bad request
-            die(json_encode(array("status" => false, "errors" => $validator->errors)));
+            die(json_encode(array("status" => false, "message" => "Invalid data", "errors" => $validator->errors)));
         }
     } else {
         http_response_code(400);//Bad request
